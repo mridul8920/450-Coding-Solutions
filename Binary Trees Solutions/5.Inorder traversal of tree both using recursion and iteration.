@@ -1,0 +1,43 @@
+// Inorder Traversal of a tree both using recursion and Iteration Solution
+
+//Recursive
+void Inorder(Node *root,vector<int>&v)
+{
+if(root==NULL)
+return;
+Inorder(root->left,v);
+v.push_back(root->data);
+Inorder(root->right,v);
+}
+vector<int> inOrder(Node* root)
+{
+// Your code here
+vector<int>v;
+Inorder(root,v);
+
+return v;
+}
+
+//Iterative
+vector<int> inOrder(Node* root)
+    {
+        vector<int>v;
+        stack<Node*>stack;
+        Node* cur=root;
+        
+        while(cur!=NULL || !stack.empty()){
+           
+            while(cur!=NULL){
+                stack.push(cur);
+                cur=cur->left;
+                
+            }
+            cur=stack.top();
+            stack.pop();
+            
+            v.push_back(cur->data);
+            
+            cur=cur->right;
+        }
+        return v;
+    }
