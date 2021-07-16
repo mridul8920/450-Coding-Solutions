@@ -1,1 +1,41 @@
+// Preorder Traversal of a tree both using recursion and Iteration Solution
 
+// Recursive Approach
+void pre(Node * root,vector<int>&v){
+    if(root==NULL) return;
+  v.push_back(root->data);
+  pre(root->left,v);
+  pre(root->right,v);
+  
+}
+vector <int> preorder(Node* root)
+{
+  // Your code here
+  vector<int>v;
+  if(root==NULL) return v;
+  pre(root,v);
+  return v;
+}
+
+
+//Iterative Approach
+vector<int> preOrder(Node* root)
+{
+    //code here
+    vector<int>v;
+    stack<Node*>stack;
+    stack.push(root);
+    if(root==NULL) return v;
+    while(!stack.empty()){
+        
+        Node* cur=stack.top();
+        stack.pop();
+        v.push_back(cur->data);
+        
+        if(cur->right) stack.push(cur->right);
+        if(cur->left)  stack.push(cur->left);
+        
+    }
+    
+    return v;
+}
