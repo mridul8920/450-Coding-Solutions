@@ -1,0 +1,49 @@
+// Postorder Traversal of a tree both using recursion and Iteration Solution
+
+//RECURSIVE
+void fun(Node *root,vector<int>&v)
+{
+if(root==NULL)
+return;
+fun(root->left,v);
+fun(root->right,v);
+v.push_back(root->data);
+
+}
+vector<int> postOrder(Node* root)
+{
+// Your code here
+vector<int>v;
+fun(root,v);
+
+return v;
+}
+
+//ITERATIVE
+vector<int> postOrder(Node* node) {
+    // code here
+    vector<int>v;
+    stack<Node*>s1;
+    stack<int>s2;
+    s1.push(node);
+    while(!s1.empty()){
+        Node* cur=s1.top();
+        s1.pop();
+        
+        s2.push(cur->data);
+        
+        if(cur->left)
+        s1.push(cur->left);
+        
+        if(cur->right)
+        s1.push(cur->right);
+    
+        }
+        
+    while(!s2.empty()){
+            v.push_back(s2.top());
+            s2.pop();
+         }
+         
+     return v;   
+    }
