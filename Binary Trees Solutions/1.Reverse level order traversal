@@ -1,0 +1,21 @@
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(N)
+
+vector<int> reverseLevelOrder(Node *root)
+{
+    queue<Node*>q;
+    q.push(root);
+    vector<int>v;
+    
+    while(!q.empty()){
+        Node* cur=q.front();
+        v.push_back(cur->data);
+        q.pop();
+    
+       if(cur->right) q.push(cur->right);
+       if(cur->left) q.push(cur->left);
+    }
+    reverse(v.begin(),v.end());
+    return v;
+    // code here
+}
