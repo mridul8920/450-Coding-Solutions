@@ -1,0 +1,28 @@
+int i=0; //declared globally to avoid backtracking
+    Node* create(int in[],int pre[],int s,int e){
+        
+        if(s>e)
+        return NULL;
+        
+        Node* root=new Node(pre[i]);
+        int index=-1;
+        for(int j=s;j<=e;j++){
+            if(in[j]==root->data){
+            index=j; 
+            break;
+          }
+        }
+        
+        i++;
+        
+        root->left=create(in,pre,s,index-1);
+        root->right=create(in,pre,index+1,e);
+        return root;
+    }
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        // Code here
+       Node* trav=create(in,pre,0,n-1);
+       return trav;
+        
+    }
