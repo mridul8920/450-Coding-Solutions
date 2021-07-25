@@ -1,0 +1,22 @@
+pair<int,bool>checkifBal(Node *root){
+    pair<int,bool>p,left,right;
+     if(root==NULL)
+      {
+         pair<int,bool> p(0,true);
+          return p;
+      }
+      
+     left=checkifBal(root->left);
+     right=checkifBal(root->right);
+     p.first=max(left.first,right.first)+1; 
+    if(abs(left.first-right.first)<=1 && left.second && right.second)
+          p.second=true;
+    else  p.second=false;
+    
+    return p;
+}
+bool isBalanced(Node *root)
+{
+    //  Your Code here
+   return checkifBal(root).second;
+}
