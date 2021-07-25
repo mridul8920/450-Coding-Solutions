@@ -1,0 +1,19 @@
+Node* lca(Node* root ,int a ,int b )
+    {
+        if(root==NULL)
+          return NULL;
+        if(root->data==a || root->data==b)
+          return root;
+        
+        Node *leftans=lca(root->left,a,b);
+        Node *rightans=lca(root->right,a,b);
+        
+        if(leftans!=NULL && rightans!=NULL)
+          return root;
+        
+        if(leftans!=NULL)  
+         return leftans;
+         
+        return rightans; 
+       //Your code here 
+    }
