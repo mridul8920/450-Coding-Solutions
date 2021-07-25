@@ -1,0 +1,16 @@
+void PrintRightView(Node* root,int level,int &maxlevel,vector<int> &v){
+        if(root==NULL) return;
+        if(maxlevel<level){
+            v.push_back(root->data);
+            maxlevel=level;
+        }
+        PrintRightView(root->right,level+1,maxlevel,v);
+        PrintRightView(root->left,level+1,maxlevel,v);
+    }
+    vector<int> rightView(Node *root)
+    {
+        vector<int>v;
+        int maxlevel=-1;
+       PrintRightView(root,0,maxlevel,v);
+       return v;
+    }
