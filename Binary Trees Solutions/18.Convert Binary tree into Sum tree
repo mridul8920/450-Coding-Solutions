@@ -1,0 +1,20 @@
+int evaluate(Node*node){
+        if(node==NULL)
+        return 0;
+        int temp=node->data;
+        if(node->left==NULL && node->right==NULL){
+        node->data=0;
+        return temp;
+        }
+        int ls=evaluate(node->left);
+        int rs=evaluate(node->right);
+        temp=node->data;
+        node->data=ls+rs;
+        return temp+node->data;
+    }
+    void toSumTree(Node *node)
+    {
+        // Your code here
+        
+        evaluate(node);
+    }
