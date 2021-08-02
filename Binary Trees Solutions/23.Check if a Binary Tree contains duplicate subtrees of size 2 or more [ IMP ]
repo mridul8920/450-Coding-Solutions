@@ -1,0 +1,23 @@
+unordered_map<string,int>m;
+    string check_duplicate(Node* root){
+        if(!root) return "$";
+        string s="";
+        if(!root->right && !root->left){  // don't include leaf nodes in map
+            s=to_string(root->data);
+            return s;
+        }
+        s+=to_string(root->data);
+        s+=check_duplicate(root->left);
+        s+=check_duplicate(root->right);
+        m[s]++;
+        return s;
+    }
+    int dupSub(Node *root) {
+         // code here
+         m.clear();
+         check_duplicate(root);
+         for(auto x:m){
+             if(x.second>=2) return 1;
+         }
+         return 0;
+    }
