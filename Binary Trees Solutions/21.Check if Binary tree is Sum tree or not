@@ -1,0 +1,16 @@
+int find_subtree_sum(Node*root){
+        if(!root) return 0;
+        return root->data + find_subtree_sum(root->left) + find_subtree_sum(root->right);
+    }
+    bool isSumTree(Node* root)
+    {
+         // Your code here
+         if(!root) return false;
+         
+        int ls=find_subtree_sum(root->left);
+        int rs=find_subtree_sum(root->right);
+         
+         if(ls+rs==root->data)
+         return true ;
+         else return false;
+    }
