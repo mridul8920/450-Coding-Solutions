@@ -1,3 +1,18 @@
+// Inorder Traversal of Binary Tree
+void inorder(int a[], std::vector<int> &v,
+                        int n, int index)
+{
+    // if index is greater or equal to vector size
+    if(index >= n)
+        return;
+    inorder(a, v, n, 2 * index + 1);
+     
+    // push elements in vector
+    v.push_back(a[index]);
+    inorder(a, v, n, 2 * index + 2);
+}
+ 
+// Function to find minimum swaps to sort an array
 int minSwaps(std::vector<int> &v)
 {
     std::vector<pair<int,int> > t(v.size());
