@@ -1,0 +1,25 @@
+map<string,int>mp;
+vector<Node*>ret;
+string trav(Node *root,string s)
+{
+    
+if(!root)
+return "%";
+s = "";
+string l= trav(root->left,s);
+s += to_string(root->data);
+string r = trav(root->right,s);
+s = l + s;s = s + r;
+mp[s]++;
+if(mp[s] == 2)
+ret.push_back(root);
+return s;
+}
+vector<Node*> printAllDups(Node* root)
+{
+// Code here
+
+mp.clear();ret.clear();
+trav(root,"");
+return ret;
+}
