@@ -1,0 +1,14 @@
+int ma=0;
+int SubtreeSum(Node* root){
+if(!root) return 0;
+int l=SubtreeSum(root->left);
+int r=SubtreeSum(root->right);
+ma=max(ma,root->data+l+r);
+return ma;
+}
+
+int LargestSubSum(Node* root){
+
+    SubtreeSum(root);
+    return ma;
+}
