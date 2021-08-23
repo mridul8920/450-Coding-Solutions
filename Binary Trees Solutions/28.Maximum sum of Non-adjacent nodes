@@ -1,0 +1,26 @@
+   Expected Time Complexity: O(N).
+   Expected Auxiliary Space: O(N).
+  
+  CODE:
+  unordered_map<Node*,int>dp;
+    int getMaxSum(Node *root) 
+    {
+        if(!root) return 0;
+        if(dp[root]) return dp[root];  //memoization
+        
+        int inc=root->data;
+        
+        if(root->left){
+            inc += getMaxSum(root->left->left);
+            inc += getMaxSum(root->left->right);
+        }
+        if(root->right){
+            inc += getMaxSum(root->right->right);
+            inc += getMaxSum(root->right->left);
+        }
+        
+       int exc = getMaxSum(root->left) + getMaxSum(root->right);
+        dp[root] = max(inc,exc);
+        return dp[root];
+        // Add your code here
+    }
