@@ -1,0 +1,33 @@
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(N)
+
+vector<int> verticalOrder(Node *root)
+    {
+        //Your code here
+          if(!root)
+        {
+            return {};
+        }
+        queue<pair<Node*,int>>q;
+        q.push(make_pair(root,0));
+        map<int,vector<int>>m;
+        vector<int>v;
+        while(!q.empty()){
+            
+            pair<Node*,int>p=q.front();
+            q.pop();
+            Node* temp=p.first;
+            int hd=p.second;
+            m[p.second].push_back(p.first->data);
+            if(temp->left) q.push(make_pair(temp->left,hd-1));
+            if(temp->right) q.push(make_pair(temp->right,hd+1));
+        }
+        for(auto it:m)
+        {
+            for(auto num:it.second)
+            {
+                v.push_back(num);
+            }
+        }
+        return v;
+    }
