@@ -1,4 +1,4 @@
-int main(){
+void check_valid_shuffle(){
 string s1,s2,res;
 cin>>s1>>s2>>res;
 int l1=s1.size();
