@@ -1,12 +1,12 @@
-**CPP APPROACH
+CPP APPROACH
 
 Approach To Follow:
 
-**- Create two containers (a max heap → s (smaller_half) and a min heap → g (greater_half))
+- Create two containers (a max heap → s (smaller_half) and a min heap → g (greater_half))
 - You have to insert the extra element in the first container i.e s and rest in the other container i.e g
 - In easy words you just have to enter the elements in the heap alternatively and just have to take care that the first container should always contain an extra element. (the size of s would always be s≥g)
 - If the size of both the containers is same then your median would be calculated by med=(s.top()+g.top())/2.0; 
-- Else your median would be med=s.top();**
+- Else your median would be med=s.top();
 
 class Solution
 {
